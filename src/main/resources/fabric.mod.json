@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "macrocosm",
+  "version": "${version}",
+  "name": "Macrocosm",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/macrocosm/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "fabric-datagen": [
+      "com.nullptrexc.macrocosm.client.MacrocosmDataGenerator"
+    ],
+    "client": [
+      "com.nullptrexc.macrocosm.client.MacrocosmClient"
+    ],
+    "main": [
+      "com.nullptrexc.macrocosm.Macrocosm"
+    ]
+  },
+  "mixins": [
+    "macrocosm.mixins.json",
+    {
+      "config": "macrocosm.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
