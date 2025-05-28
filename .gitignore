@@ -2,4 +2,4 @@
 /.idea/
 /.gradle/
 /run/
-/generated/.cache/
+/src/main/generated/.cache/
