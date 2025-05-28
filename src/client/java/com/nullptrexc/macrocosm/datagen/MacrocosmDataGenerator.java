@@ -2,6 +2,7 @@ package com.nullptrexc.macrocosm.datagen;
 
 import com.nullptrexc.macrocosm.datagen.providers.MacrocosmModelProvider;
 import com.nullptrexc.macrocosm.datagen.providers.MacrocosmRecipeProvider;
+import com.nullptrexc.macrocosm.datagen.providers.lang.MacrocosmDutchLaguageProvider;
 import com.nullptrexc.macrocosm.datagen.providers.lang.MacrocosmEnglishLanguageProvider;
 import com.nullptrexc.macrocosm.datagen.providers.tagproviders.MacrocosmBlockTagProvider;
 import com.nullptrexc.macrocosm.datagen.providers.tagproviders.MacrocosmItemTagProvider;
@@ -15,6 +16,8 @@ public class MacrocosmDataGenerator implements DataGeneratorEntrypoint {
         FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
 
         pack.addProvider(MacrocosmEnglishLanguageProvider::new);
+        pack.addProvider(MacrocosmDutchLaguageProvider::new);
+
         pack.addProvider(MacrocosmModelProvider::new);
         pack.addProvider(MacrocosmRecipeProvider::new);
         pack.addProvider(MacrocosmItemTagProvider::new);

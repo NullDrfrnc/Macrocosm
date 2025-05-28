@@ -1,7 +1,6 @@
 package com.nullptrexc.macrocosm.datagen.providers.lang;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.registry.RegistryWrapper;
 
 import java.io.IOException;
@@ -9,23 +8,16 @@ import java.nio.file.Path;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-public class MacrocosmEnglishLanguageProvider extends AbstractLanguageProvider {
-    private static final String langCode = "en_us";
+public class MacrocosmDutchLaguageProvider extends AbstractLanguageProvider{
 
-    public MacrocosmEnglishLanguageProvider(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> wrapperLookup) {
-        super(langCode, dataOutput, wrapperLookup);
+    private static final String langCode = "nl_nl";
+
+    public MacrocosmDutchLaguageProvider(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
+        super(langCode, dataOutput, registryLookup);
     }
 
     @Override
     public void generateTranslations(RegistryWrapper.WrapperLookup wrapperLookup, TranslationBuilder translationBuilder) {
         getExistingLangFile(translationBuilder);
-
-        // Items
-
-        // Blocks
-
-        // ItemGroups
-
-        // ItemTags
     }
 }

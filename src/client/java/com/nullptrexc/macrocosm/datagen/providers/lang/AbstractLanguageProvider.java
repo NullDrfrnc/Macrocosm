@@ -15,12 +15,15 @@ import java.util.concurrent.CompletableFuture;
  * An abstract data generator
  */
 public abstract class AbstractLanguageProvider extends FabricLanguageProvider {
-    private final String langCode;
+
+    public final String langCode;
 
     private static final Logger LOGGER = Macrocosm.LOGGER;
 
+
+
     public AbstractLanguageProvider(String langCode, FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
-        super(dataOutput, registryLookup);
+        super(dataOutput, langCode, registryLookup);
         this.langCode = langCode;
     }
 
