@@ -1,6 +1,5 @@
 /.gradle/
 /build/
 /.idea/
-/gradle/
 /run/
 /src/main/generated/.cache/
