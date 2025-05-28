@@ -11,5 +11,6 @@ public class Macrocosm implements ModInitializer {
 
     @Override
     public void onInitialize() {
+//        ModBlocks.init();
     }
 }
