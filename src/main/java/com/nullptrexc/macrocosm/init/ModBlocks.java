@@ -1,37 +1,48 @@
 package com.nullptrexc.macrocosm.init;
 
 import com.nullptrexc.macrocosm.Macrocosm;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BushBlock;
-import net.minecraft.block.MapColor;
+import com.nullptrexc.macrocosm.common.blocks.BigFlowerBlock;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.block.*;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroups;
+import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Objects;
 import java.util.function.Function;
 
 public class ModBlocks {
 
-    public static BushBlock lavender = register(
+    public static final BigFlowerBlock LAVENDER = register(
             "lavender",
-            BushBlock::new,
-            AbstractBlock.Settings.create(),
+            BigFlowerBlock::new,
+            AbstractBlock.Settings.create()
+                    .mapColor(MapColor.DARK_GREEN)
+                    .noCollision()
+                    .breakInstantly()
+                    .sounds(BlockSoundGroup.GRASS)
+                    .offset(AbstractBlock.OffsetType.XZ)
+                    .burnable()
+                    .pistonBehavior(PistonBehavior.DESTROY),
             null
     );
 
-
     public static void init() {
-
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(itemgroup -> {
+            itemgroup.addAfter(Items.LILY_OF_THE_VALLEY, LAVENDER);
+        });
     }
 
-    private static <T extends Block> T register(String name, Function<T.Settings, T> blockFactory, T.Settings settings) {
+    public static <T extends Block> T register(String name, Function<T.Settings, T> blockFactory, T.Settings settings) {
         RegistryKey<Block> blockKey = keyOfBlock(name);
         return Registry.register(Registries.BLOCK, blockKey, blockFactory.apply(settings.registryKey(blockKey)));
     }
@@ -42,10 +53,7 @@ public class ModBlocks {
 
         RegistryKey<Item> itemKey = keyOfItem(name);
 
-        if(blockSettings == null)
-            Registry.register(Registries.ITEM, itemKey, new BlockItem(block, new Item.Settings().registryKey(itemKey)));
-        else
-            Registry.register(Registries.ITEM, itemKey, new BlockItem(block, blockSettings.registryKey(itemKey)));
+        Registry.register(Registries.ITEM, itemKey, new BlockItem(block, Objects.requireNonNullElseGet(blockSettings, Item.Settings::new).registryKey(itemKey)));
 
         return Registry.register(Registries.BLOCK, blockKey, block);
     }

@@ -1,5 +1,6 @@
 package com.nullptrexc.macrocosm.datagen.providers.lang;
 
+import com.nullptrexc.macrocosm.init.ModBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.registry.RegistryWrapper;
@@ -21,8 +22,10 @@ public class MacrocosmEnglishLanguageProvider extends AbstractLanguageProvider {
         getExistingLangFile(translationBuilder);
 
         // Items
+        translationBuilder.add(ModBlocks.LAVENDER.asItem(), "Lavender");
 
         // Blocks
+        translationBuilder.add(ModBlocks.LAVENDER, "Lavender");
 
         // ItemGroups
 

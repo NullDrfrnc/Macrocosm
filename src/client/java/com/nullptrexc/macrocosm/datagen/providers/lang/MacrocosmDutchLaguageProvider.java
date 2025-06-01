@@ -1,5 +1,6 @@
 package com.nullptrexc.macrocosm.datagen.providers.lang;
 
+import com.nullptrexc.macrocosm.init.ModBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.registry.RegistryWrapper;
 
@@ -19,5 +20,9 @@ public class MacrocosmDutchLaguageProvider extends AbstractLanguageProvider{
     @Override
     public void generateTranslations(RegistryWrapper.WrapperLookup wrapperLookup, TranslationBuilder translationBuilder) {
         getExistingLangFile(translationBuilder);
+
+        translationBuilder.add(ModBlocks.LAVENDER.asItem(), "Lavendel");
+
+        translationBuilder.add(ModBlocks.LAVENDER, "Lavendel");
     }
 }

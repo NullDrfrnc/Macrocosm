@@ -1,9 +1,12 @@
 package com.nullptrexc.macrocosm.datagen.providers;
 
+import com.nullptrexc.macrocosm.init.ModBlocks;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.client.data.BlockStateModelGenerator;
 import net.minecraft.client.data.ItemModelGenerator;
+import net.minecraft.client.data.Models;
+import net.minecraft.item.Item;
 
 public class MacrocosmModelProvider extends FabricModelProvider {
     public MacrocosmModelProvider(FabricDataOutput output) {
@@ -27,6 +30,6 @@ public class MacrocosmModelProvider extends FabricModelProvider {
      */
     @Override
     public void generateItemModels(ItemModelGenerator modelGen) {
-
+        modelGen.register(ModBlocks.LAVENDER.asItem(), Models.GENERATED);
     }
 }
