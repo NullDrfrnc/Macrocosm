@@ -1,9 +1,11 @@
 package com.nullptrexc.macrocosm.datagen.providers;
 
+import com.nullptrexc.macrocosm.init.ModBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.data.recipe.RecipeExporter;
 import net.minecraft.data.recipe.RecipeGenerator;
+import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
 
@@ -26,7 +28,10 @@ public class MacrocosmRecipeProvider extends FabricRecipeProvider {
         return new RecipeGenerator(wrapperLookup, recipeExporter) {
             @Override
             public void generate() {
-
+                createShapeless(RecipeCategory.MISC, Items.MAGENTA_DYE)
+                        .input(ModBlocks.LAVENDER)
+                        .criterion(hasItem(ModBlocks.LAVENDER), conditionsFromItem(ModBlocks.LAVENDER))
+                        .offerTo(recipeExporter);
             }
         };
     }

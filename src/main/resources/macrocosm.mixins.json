@@ -4,6 +4,7 @@
   "package": "com.nullptrexc.macrocosm.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "blocks.PlantBlockCanPlantOnTopMixin"
   ],
   "injectors": {
     "defaultRequire": 1

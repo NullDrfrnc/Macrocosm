@@ -2,6 +2,7 @@ package com.nullptrexc.macrocosm.init;
 
 import com.nullptrexc.macrocosm.Macrocosm;
 import com.nullptrexc.macrocosm.common.blocks.BigFlowerBlock;
+import com.nullptrexc.macrocosm.common.tags.ModBlockTags;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.*;
 import net.minecraft.block.piston.PistonBehavior;
@@ -24,7 +25,7 @@ public class ModBlocks {
 
     public static final BigFlowerBlock LAVENDER = register(
             "lavender",
-            BigFlowerBlock::new,
+            settings -> new BigFlowerBlock(ModBlockTags.DRY_LOOSE_SOILS, settings),
             AbstractBlock.Settings.create()
                     .mapColor(MapColor.DARK_GREEN)
                     .noCollision()
@@ -32,30 +33,16 @@ public class ModBlocks {
                     .sounds(BlockSoundGroup.GRASS)
                     .offset(AbstractBlock.OffsetType.XZ)
                     .burnable()
-                    .pistonBehavior(PistonBehavior.DESTROY),
-            null
+                    .pistonBehavior(PistonBehavior.DESTROY)
     );
 
     public static void init() {
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(itemgroup -> {
-            itemgroup.addAfter(Items.LILY_OF_THE_VALLEY, LAVENDER);
-        });
+
     }
 
     public static <T extends Block> T register(String name, Function<T.Settings, T> blockFactory, T.Settings settings) {
         RegistryKey<Block> blockKey = keyOfBlock(name);
         return Registry.register(Registries.BLOCK, blockKey, blockFactory.apply(settings.registryKey(blockKey)));
-    }
-
-    private static <T extends Block> T register(String name, Function<T.Settings, T> blockFactory, T.Settings settings, @Nullable Item.Settings blockSettings) {
-        RegistryKey<Block> blockKey = keyOfBlock(name);
-        T block = blockFactory.apply(settings.registryKey(blockKey));
-
-        RegistryKey<Item> itemKey = keyOfItem(name);
-
-        Registry.register(Registries.ITEM, itemKey, new BlockItem(block, Objects.requireNonNullElseGet(blockSettings, Item.Settings::new).registryKey(itemKey)));
-
-        return Registry.register(Registries.BLOCK, blockKey, block);
     }
 
     private static RegistryKey<Block> keyOfBlock(String name) {
