@@ -23,5 +23,6 @@ public class MacrocosmDutchLaguageProvider extends AbstractLanguageProvider{
         getExistingLangFile(translationBuilder);
 
         translationBuilder.add(ModItems.LAVENDER, "Lavendel");
+        translationBuilder.add(ModItems.ROWAN_BERRY, "Lijsterbes");
     }
 }

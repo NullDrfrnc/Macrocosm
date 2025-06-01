@@ -32,5 +32,6 @@ public class MacrocosmModelProvider extends FabricModelProvider {
     @Override
     public void generateItemModels(ItemModelGenerator modelGen) {
         modelGen.register(ModItems.LAVENDER, Models.GENERATED);
+        modelGen.register(ModItems.ROWAN_BERRY, Models.GENERATED);
     }
 }

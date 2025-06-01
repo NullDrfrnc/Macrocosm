@@ -24,6 +24,7 @@ public class MacrocosmEnglishLanguageProvider extends AbstractLanguageProvider {
 
         // Items
         translationBuilder.add(ModItems.LAVENDER, "Lavender");
+        translationBuilder.add(ModItems.ROWAN_BERRY, "Rowanberry");
 
         // ItemGroups
 
